@@ -3,250 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دمو لینگو هاب</title>
+    <title> دمو لینگو هاب</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;400;700;900&display=swap');
-        body { font-family: 'Vazirmatn', sans-serif; background: #f0f2f5; color: #1e293b; }
-        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); }
-        .gradient-text { background: linear-gradient(90deg, #4f46e5, #9333ea); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .tab-content { display: none; animation: fadeIn 0.4s ease-in-out; }
+        body { font-family: 'Vazirmatn', sans-serif; background: #f8fafc; padding-bottom: 70px; } 
+        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .tab-content { display: none; animation: slideUp 0.3s ease-out; }
         .tab-content.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .active-nav { color: #4f46e5 !important; border-top: 2px solid #4f46e5; }
+        @media (min-width: 768px) { body { padding-bottom: 0; } .active-nav { border-top: none; color: #4f46e5 !important; font-weight: bold; } }
     </style>
 </head>
 <body>
 
-    
-    <nav class="sticky top-0 z-50 glass shadow-sm px-6 py-3 flex justify-between items-center">
-        <div class="flex items-center gap-8">
-            <div class="text-2xl font-black gradient-text">LingoHub Demo</div>
-            <div class="hidden md:flex gap-6 text-sm font-bold text-gray-600">
-                <button onclick="showPage('home')" class="hover:text-indigo-600 transition">صفحه اصلی</button>
-                <button onclick="showPage('dashboard')" class="hover:text-indigo-600 transition">میز کار مدرس</button>
-                <button onclick="showPage('calendar')" class="hover:text-indigo-600 transition">زمان‌بندی</button>
-            </div>
+    <nav class="hidden md:flex sticky top-0 z-50 glass px-12 py-4 justify-between items-center">
+        <div class="text-2xl font-black text-indigo-600">LingoHub Demo</div>
+        <div class="flex gap-8">
+            <button onclick="showPage('home', this)" class="nav-btn active-nav text-gray-500 hover:text-indigo-600 transition">صفحه اصلی</button>
+            <button onclick="showPage('dashboard', this)" class="nav-btn text-gray-500 hover:text-indigo-600 transition">پنل کاربری</button>
+            <button onclick="showPage('calendar', this)" class="nav-btn text-gray-500 hover:text-indigo-600 transition">تقویم و زمان‌بندی</button>
         </div>
-        <div class="flex items-center gap-4">
-            <i class="fa-regular fa-bell text-xl text-gray-400 cursor-pointer"></i>
-            <div class="flex items-center gap-2 border-r pr-4">
-                <img src="https://ui-avatars.com/api/?name=Ali+Alavi&background=4f46e5&color=fff" class="w-10 h-10 rounded-full shadow-md">
-                <div class="hidden md:block">
-                    <p class="text-xs font-bold">استاد علی علوی</p>
-                    <p class="text-[10px] text-green-500">سطح: طلایی</p>
-                </div>
-            </div>
+        <div class="flex items-center gap-3">
+            <img src="https://ui-avatars.com/api/?name=استاد+علوی&background=4f46e5&color=fff" class="w-10 h-10 rounded-full">
         </div>
     </nav>
 
-    
-    <div id="home" class="tab-content active">
-       
-        <section class="relative py-20 px-6 overflow-hidden">
-            <div class="absolute top-0 left-0 w-72 h-72 bg-indigo-200 rounded-full blur-[120px] opacity-50 -z-10"></div>
-            <div class="container mx-auto text-center">
-                <span class="bg-indigo-100 text-indigo-700 px-4 py-1 rounded-full text-xs font-bold">پلتفرم مدرسین زبان</span>
-                <h1 class="text-6xl font-black mt-6 leading-tight">تدریس زبان، <span class="gradient-text">بدون مرز</span></h1>
-                <p class="max-w-2xl mx-auto mt-6 text-gray-500 text-lg">تمام ابزارهایی که برای جذب شاگرد، برگزاری کلاس و مدیریت مالی نیاز دارید، در یک محیط مدرن و یکپارچه.</p>
-                <div class="mt-10 flex justify-center gap-4">
-                    <button class="bg-indigo-600 text-white px-10 py-4 rounded-2xl font-bold shadow-xl shadow-indigo-200 hover:scale-105 transition transform">همین حالا شروع کنید</button>
-                    <button class="bg-white border px-10 py-4 rounded-2xl font-bold hover:bg-gray-50 transition">مشاهده دمو</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Stats Section -->
-        <section class="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 px-6 pb-20">
-            <div class="bg-white p-8 rounded-[2rem] text-center shadow-sm">
-                <p class="text-4xl font-black text-indigo-600">۱۵۰۰+</p>
-                <p class="text-gray-400 text-sm mt-2">مدرس فعال</p>
-            </div>
-            <div class="bg-white p-8 rounded-[2rem] text-center shadow-sm">
-                <p class="text-4xl font-black text-indigo-600">۵۰k+</p>
-                <p class="text-gray-400 text-sm mt-2">زبان‌آموز</p>
-            </div>
-            <div class="bg-white p-8 rounded-[2rem] text-center shadow-sm">
-                <p class="text-4xl font-black text-indigo-600">۲۴/۷</p>
-                <p class="text-gray-400 text-sm mt-2">پشتیبانی زنده</p>
-            </div>
-            <div class="bg-white p-8 rounded-[2rem] text-center shadow-sm">
-                <p class="text-4xl font-black text-indigo-600">۰٪</p>
-                <p class="text-gray-400 text-sm mt-2">کارمزد ماه اول</p>
-            </div>
-        </section>
+    <div class="md:hidden flex justify-between items-center p-4 bg-white border-b">
+        <div class="text-xl font-black text-indigo-600">LingoHub Demo</div>
+        <i class="fa-regular fa-bell text-gray-500"></i>
     </div>
 
-    
-    <div id="dashboard" class="tab-content container mx-auto p-6">
-        <div class="grid grid-cols-12 gap-6">
-            
-            <div class="col-span-12 lg:col-span-8 space-y-6">
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="bg-gradient-to-br from-indigo-600 to-blue-700 p-6 rounded-3xl text-white shadow-lg relative overflow-hidden">
-                        <i class="fa fa-wallet absolute -right-4 -bottom-4 text-6xl opacity-10"></i>
-                        <p class="opacity-80">درآمد این ماه</p>
-                        <h3 class="text-3xl font-black mt-2">۱۴,۲۰۰,۰۰۰ <span class="text-sm font-normal">تومان</span></h3>
-                        <p class="text-xs mt-4 text-green-300"><i class="fa fa-arrow-up"></i> ۱۲٪ بیشتر از ماه قبل</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
-                        <p class="text-gray-400">ساعت تدریس</p>
-                        <h3 class="text-3xl font-black mt-2 text-gray-800">۸۴ <span class="text-sm font-normal text-gray-400">ساعت</span></h3>
-                        <div class="w-full bg-gray-100 h-2 rounded-full mt-4">
-                            <div class="bg-orange-400 h-2 rounded-full w-[70%]"></div>
-                        </div>
-                    </div>
-                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
-                        <p class="text-gray-400">شاگردان جدید</p>
-                        <h3 class="text-3xl font-black mt-2 text-gray-800">۱۲ <span class="text-sm font-normal text-gray-400">نفر</span></h3>
-                        <div class="flex -space-x-2 mt-4 space-x-reverse">
-                            <img class="w-8 h-8 rounded-full border-2 border-white" src="https://i.pravatar.cc/150?u=1">
-                            <img class="w-8 h-8 rounded-full border-2 border-white" src="https://i.pravatar.cc/150?u=2">
-                            <img class="w-8 h-8 rounded-full border-2 border-white" src="https://i.pravatar.cc/150?u=3">
-                            <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-[10px]">+۹</div>
-                        </div>
-                    </div>
-                </div>
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t flex justify-around items-center py-2 z-50 shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
+        <button onclick="showPage('home', this)" class="nav-btn-m active-nav flex flex-col items-center gap-1 text-gray-400 w-full">
+            <i class="fa fa-home text-lg"></i>
+            <span class="text-[10px]">اصلی</span>
+        </button>
+        <button onclick="showPage('dashboard', this)" class="nav-btn-m flex flex-col items-center gap-1 text-gray-400 w-full">
+            <i class="fa fa-chart-pie text-lg"></i>
+            <span class="text-[10px]">پنل</span>
+        </button>
+        <button onclick="showPage('calendar', this)" class="nav-btn-m flex flex-col items-center gap-1 text-gray-400 w-full">
+            <i class="fa fa-calendar-alt text-lg"></i>
+            <span class="text-[10px]">تقویم</span>
+        </button>
+    </nav>
 
-                
-                <div class="bg-white rounded-3xl p-6 shadow-sm border border-gray-100">
-                    <div class="flex justify-between items-center mb-6">
-                        <h3 class="font-bold text-lg">آخرین جلسات برگزار شده</h3>
-                        <button class="text-indigo-600 text-sm font-bold">مشاهده همه</button>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="flex items-center justify-between p-4 hover:bg-gray-50 rounded-2xl transition border border-transparent hover:border-gray-100">
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600"><i class="fa fa-book-open"></i></div>
-                                <div>
-                                    <p class="font-bold">آموزش گرامر سطح B2</p>
-                                    <p class="text-xs text-gray-400">شاگرد: مهسا امینی • ۲ ساعت پیش</p>
-                                </div>
-                            </div>
-                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-lg text-xs">کامل شده</span>
-                        </div>
-                        <div class="flex items-center justify-between p-4 hover:bg-gray-50 rounded-2xl transition">
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 bg-purple-100 rounded-2xl flex items-center justify-center text-purple-600"><i class="fa fa-headset"></i></div>
-                                <div>
-                                    <p class="font-bold">مکالمه فشرده IELTS</p>
-                                    <p class="text-xs text-gray-400">شاگرد: رامین رضایی • دیروز</p>
-                                </div>
-                            </div>
-                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-lg text-xs">کامل شده</span>
-                        </div>
-                    </div>
+    <main class="container mx-auto p-4 md:p-8">
+
+        <div id="home" class="tab-content active">
+            <div class="text-center py-10 md:py-20">
+                <h1 class="text-4xl md:text-6xl font-black text-gray-900 leading-tight">پلتفرم اختصاصی <br><span class="text-indigo-600">مدرسین زبان</span></h1>
+                <p class="mt-6 text-gray-500 max-w-xl mx-auto italic">"یه جمله انگیزه دهنده."</p>
+                <div class="mt-10 flex flex-col md:flex-row justify-center gap-4">
+                    <button class="bg-indigo-600 text-white px-8 py-4 rounded-2xl font-bold shadow-lg">ثبت‌نام مدرس</button>
+                    <button class="bg-white border px-8 py-4 rounded-2xl font-bold">ورود کاربران</button>
                 </div>
             </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-50 text-center">
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fa fa-bolt"></i></div>
+                    <h3 class="font-bold">سریع و هوشمند</h3>
+                    <p class="text-sm text-gray-400 mt-2">تمام فرآیند رزرو خودکار انجام می‌شود.</p>
+                </div>
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-50 text-center">
+                    <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fa fa-wallet"></i></div>
+                    <h3 class="font-bold">تسویه حساب آنی</h3>
+                    <p class="text-sm text-gray-400 mt-2">درآمد شما بلافاصله قابل برداشت است.</p>
+                </div>
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-50 text-center">
+                    <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fa fa-video"></i></div>
+                    <h3 class="font-bold">کلاس داخلی</h3>
+                    <p class="text-sm text-gray-400 mt-2">بدون نیاز به نصب نرم‌افزارهای جانبی.</p>
+                </div>
+            </div>
+        </div>
 
-            
-            <div class="col-span-12 lg:col-span-4 space-y-6">
-                <div class="bg-indigo-900 rounded-3xl p-6 text-white shadow-xl">
-                    <h3 class="font-bold mb-4">کلاس آنلاین بعدی</h3>
-                    <div class="bg-white/10 p-4 rounded-2xl mb-4">
-                        <p class="text-xs opacity-70">امروز - ساعت ۱۸:۳۰</p>
-                        <p class="font-bold text-lg">پارتنرشیپ مکالمه انگلیسی</p>
-                        <div class="flex items-center gap-2 mt-4">
-                            <img src="https://i.pravatar.cc/150?u=9" class="w-6 h-6 rounded-full">
-                            <span class="text-sm">سارا اصغری</span>
+        <div id="dashboard" class="tab-content">
+            <h2 class="text-2xl font-bold mb-6">خوش آمدید، استاد علوی </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                <div class="bg-indigo-600 text-white p-6 rounded-[2rem] shadow-lg">
+                    <p class="text-indigo-100 text-sm">درآمد امروز</p>
+                    <h4 class="text-2xl font-black mt-1">۸۵۰,۰۰۰ ت</h4>
+                </div>
+                <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100">
+                    <p class="text-gray-400 text-sm">کلاس‌های رزرو شده</p>
+                    <h4 class="text-2xl font-black mt-1 text-gray-800">۱۴ جلسه</h4>
+                </div>
+                <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100">
+                    <p class="text-gray-400 text-sm">نظرات مثبت</p>
+                    <h4 class="text-2xl font-black mt-1 text-gray-800">۹۸٪</h4>
+                </div>
+                <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100">
+                    <p class="text-gray-400 text-sm">تعداد کل شاگردان</p>
+                    <h4 class="text-2xl font-black mt-1 text-gray-800">۴۲ نفر</h4>
+                </div>
+            </div>
+            <div class="bg-white rounded-[2rem] p-6 shadow-sm border border-indigo-100 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-4">
+                    <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center text-orange-600 text-2xl font-bold leading-none italic">IELTS</div>
+                    <div>
+                        <p class="font-bold text-lg">آموزش رایتینگ آیلتس</p>
+                        <p class="text-sm text-gray-400">شاگرد: امیرحسین سعیدی • شروع تا ۲۰ دقیقه دیگر</p>
+                    </div>
+                </div>
+                <button class="w-full md:w-auto bg-indigo-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-indigo-700 transition">ورود به کلاس آنلاین</button>
+            </div>
+        </div>
+
+        <div id="calendar" class="tab-content">
+            <div class="bg-white rounded-[2rem] shadow-xl overflow-hidden">
+                <div class="p-6 bg-gray-50 border-b flex justify-between items-center">
+                    <h2 class="text-xl font-bold">برنامه هفتگی</h2>
+                    <button class="bg-indigo-600 text-white px-5 py-2 rounded-xl text-sm font-bold">ذخیره نهایی</button>
+                </div>
+                
+                <div class="p-4 grid grid-cols-1 gap-4">
+                    <div class="text-xs text-gray-400 text-center mb-2 italic">روی ساعت‌هایی که آزاد هستید کلیک کنید تا برای شاگردان نمایش داده شود.</div>
+                    
+                    <div class="space-y-3">
+                        <p class="font-bold border-r-4 border-indigo-500 pr-2">شنبه (امروز)</p>
+                        <div class="grid grid-cols-3 md:grid-cols-6 gap-2">
+                            <div onclick="toggleTime(this)" class="p-3 border rounded-2xl text-center text-sm cursor-pointer hover:border-indigo-500 transition active:scale-95">۰۸:۰۰ - ۰۹:۰۰</div>
+                            <div onclick="toggleTime(this)" class="p-3 border rounded-2xl text-center text-sm cursor-pointer hover:border-indigo-500 transition">۰۹:۰۰ - ۱۰:۰۰</div>
+                            <div class="p-3 bg-indigo-600 text-white border border-indigo-600 rounded-2xl text-center text-sm font-bold shadow-md">۱۰:۰۰ - ۱۱:۰۰ <br><span class="text-[8px] font-normal">رزرو شده</span></div>
+                            <div onclick="toggleTime(this)" class="p-3 border rounded-2xl text-center text-sm cursor-pointer hover:border-indigo-500 transition">۱۱:۰۰ - ۱۲:۰۰</div>
+                            <div onclick="toggleTime(this)" class="p-3 border rounded-2xl text-center text-sm cursor-pointer hover:border-indigo-500 transition">۱۳:۰۰ - ۱۴:۰۰</div>
+                            <div onclick="toggleTime(this)" class="p-3 border rounded-2xl text-center text-sm cursor-pointer hover:border-indigo-500 transition">۱۴:۰۰ - ۱۵:۰۰</div>
                         </div>
                     </div>
-                    <button class="w-full bg-white text-indigo-900 py-3 rounded-xl font-bold hover:bg-indigo-50 transition">ورود به کلاس <i class="fa fa-external-link mr-2 text-xs"></i></button>
-                </div>
 
-                <div class="bg-white rounded-3xl p-6 shadow-sm border border-gray-100">
-                    <h3 class="font-bold mb-4">اعلانات جدید</h3>
-                    <div class="space-y-4">
-                        <div class="flex gap-3 text-sm border-b pb-3 border-gray-50">
-                            <div class="w-2 h-2 bg-indigo-500 rounded-full mt-1.5 shrink-0"></div>
-                            <p class="text-gray-600">درخواست رزرو جدید از طرف **امیر نوری** برای روز دوشنبه.</p>
-                        </div>
-                        <div class="flex gap-3 text-sm">
-                            <div class="w-2 h-2 bg-indigo-500 rounded-full mt-1.5 shrink-0"></div>
-                            <p class="text-gray-600">تسویه حساب هفتگی با موفقیت انجام شد.</p>
+                    <div class="space-y-3 mt-6">
+                        <p class="font-bold border-r-4 border-gray-300 pr-2">یکشنبه</p>
+                        <div class="grid grid-cols-3 md:grid-cols-6 gap-2 opacity-60">
+                            <div onclick="toggleTime(this)" class="p-3 border rounded-2xl text-center text-sm cursor-pointer">۰۸:۰۰</div>
+                            <div onclick="toggleTime(this)" class="p-3 border rounded-2xl text-center text-sm cursor-pointer">۰۹:۰۰</div>
+                            <div onclick="toggleTime(this)" class="p-3 border rounded-2xl text-center text-sm cursor-pointer">۱۰:۰۰</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    
-    <div id="calendar" class="tab-content container mx-auto p-6">
-        <div class="bg-white rounded-[2.5rem] shadow-xl border border-gray-100 overflow-hidden">
-            <div class="p-8 border-b flex flex-wrap justify-between items-center gap-4 bg-gray-50/50">
-                <div>
-                    <h2 class="text-3xl font-black tracking-tight">برنامه زمانی من</h2>
-                    <p class="text-gray-400 mt-1">زمان‌های در دسترس خود را برای رزرو شاگردان انتخاب کنید.</p>
-                </div>
-                <div class="flex gap-3">
-                    <select class="bg-white border rounded-xl px-4 py-2 text-sm outline-none focus:ring-2 ring-indigo-500 transition">
-                        <option>Tehran (GMT +3:30)</option>
-                        <option>Berlin (GMT +1:00)</option>
-                    </select>
-                    <button class="bg-indigo-600 text-white px-6 py-2 rounded-xl font-bold shadow-lg shadow-indigo-100">ذخیره تغییرات</button>
-                </div>
-            </div>
-            
-            <div class="overflow-x-auto">
-                <div class="min-w-[800px] grid grid-cols-8">
-                    
-                    <div class="p-6 border-b border-l bg-gray-50/30 text-gray-400 text-xs font-bold uppercase tracking-wider">ساعت</div>
-                    <div class="p-6 border-b border-l text-center font-bold">شنبه</div>
-                    <div class="p-6 border-b border-l text-center font-bold">یکشنبه</div>
-                    <div class="p-6 border-b border-l text-center font-bold">دوشنبه</div>
-                    <div class="p-6 border-b border-l text-center font-bold">سه‌شنبه</div>
-                    <div class="p-6 border-b border-l text-center font-bold">چهارشنبه</div>
-                    <div class="p-6 border-b border-l text-center font-bold">پنجشنبه</div>
-                    <div class="p-6 border-b text-center font-bold text-red-500 font-black">جمعه</div>
-
-                    
-                    <script>
-                        const times = ["۰۸:۰۰", "۱۰:۰۰", "۱۲:۰۰", "۱۴:۰۰", "۱۶:۰۰", "۱۸:۰۰"];
-                        const calendarContainer = document.querySelector('#calendar .grid');
-                        
-                        times.forEach(time => {
-                        
-                            document.write(`<div class="p-6 border-b border-l bg-gray-50/30 text-gray-500 font-medium">${time}</div>`);
-                            
-                            for(let i=0; i<7; i++) {
-                                let statusClass = "bg-white hover:bg-indigo-50 transition-all cursor-pointer border-b border-l";
-                                let content = "";
-                                
-                                if(Math.random() > 0.8) {
-                                    statusClass = "bg-indigo-600 text-white border-b border-l p-2";
-                                    content = `<div class="text-[10px] font-bold text-center py-2 bg-white/20 rounded-lg">رزرو شده: علی م.</div>`;
-                                } else if(Math.random() > 0.6) {
-                                    statusClass = "bg-green-50 border-b border-l border-green-200 group relative";
-                                    content = `<div class="w-2 h-2 bg-green-500 rounded-full mx-auto"></div>`;
-                                }
-                                
-                                if(i === 6) statusClass = statusClass.replace("border-l", "") + " bg-gray-100/50";
-                                
-                                document.write(`<div class="p-4 ${statusClass}">${content}</div>`);
-                            }
-                        });
-                    </script>
-                </div>
-            </div>
-            
-            <div class="p-6 bg-indigo-50 flex gap-6 text-sm">
-                <div class="flex items-center gap-2"><div class="w-4 h-4 bg-white border rounded"></div> زمان خالی</div>
-                <div class="flex items-center gap-2"><div class="w-4 h-4 bg-green-500 rounded"></div> زمان آزاد شما</div>
-                <div class="flex items-center gap-2"><div class="w-4 h-4 bg-indigo-600 rounded"></div> کلاس رزرو شده</div>
-            </div>
-        </div>
-    </div>
+    </main>
 
     <script>
-        function showPage(pageId) {
+        function showPage(pageId, element) {
             document.querySelectorAll('.tab-content').forEach(p => p.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
             
+            document.querySelectorAll('.nav-btn, .nav-btn-m').forEach(btn => {
+                btn.classList.remove('active-nav');
+                btn.classList.add('text-gray-400');
+            });
+
+            element.classList.add('active-nav');
+            element.classList.remove('text-gray-400');
             
-            const btns = document.querySelectorAll('nav button');
-            btns.forEach(b => b.classList.remove('text-indigo-600'));
+            window.scrollTo(0, 0);
+        }
+
+        function toggleTime(el) {
+            if (el.classList.contains('bg-green-500')) {
+                el.classList.remove('bg-green-500', 'text-white', 'border-green-500');
+                el.classList.add('bg-white', 'text-gray-900');
+            } else {
+                el.classList.add('bg-green-500', 'text-white', 'border-green-500');
+                el.classList.remove('bg-white', 'text-gray-900');
+            }
         }
     </script>
 </body>
